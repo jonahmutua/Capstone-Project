@@ -1,4 +1,4 @@
-# SIMS Step 1: Layered architecture (Mermaid source)
+# System architecture 
 
 
 
