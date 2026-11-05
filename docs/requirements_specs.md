@@ -8,7 +8,7 @@
 
 ### 1.1 Purpose 
 
-This document specifies the requirements for a  Management System (SIMS). It defines what the system must do, the rules it must follow, and the qualities it must have, so that design, development and testing can proceed from a shared understanding. It does not prescribe technology, those choices come in the design phase. 
+This document specifies the requirements for a Inventory Management System (IMS). It defines what the system must do, the rules it must follow, and the qualities it must have, so that design, development and testing can proceed from a shared understanding. 
 
 ### 1.2 Scope 
 
@@ -28,7 +28,7 @@ This document specifies the requirements for a  Management System (SIMS). It def
 
 - **Cover days** : days of sales an incoming order should last after it arrives. 
 
-- **SKU / product** : one distinct item sold, identified by a unique barcode. 
+- **SKU / product** : one distinct item sold, identified by a unique barcode or SKU ID. 
 
 
 
@@ -63,7 +63,7 @@ A browser-based application used on store computers and tablets, with a relation
 
 - Categories are flat (no subcategories). 
 
-- Every product carries a unique barcode. 
+- Every product carries a unique barcode or SKU ID. 
 
 - Sales are recorded at the time they occur, so sales history is reliable enough to measure demand. 
 
@@ -270,9 +270,7 @@ Example: "Order 310 units of Milk from Fresh Dairy Ltd. Sales average 40 units a
 
 ### 4.6 Recommendation lifecycle 
 
-Pending, then Accepted (purchase created and linked), or Dismissed. When the engine reruns, a still-pending recommendation for the same product is refreshed with new figures rather than duplicated. Accepted and dismissed recommendations are kept 
-
-#### permanently as history. 
+Pending, then Accepted (purchase created and linked), or Dismissed. When the engine reruns, a still-pending recommendation for the same product is refreshed with new figures rather than duplicated. Accepted and dismissed recommendations are kept permanently as history. 
 
 ## 5. Data requirements 
 
@@ -393,47 +391,4 @@ Sales, purchases and recommendations shall be retained for at least five years.
 |UC-<br>07|Manage products and<br>suppliers|Manager,<br>Admin|Create and edit master data.|
 |UC-<br>08|Manage users|Admin|Create users, assign roles,<br>deactivate, reset passwords.|
 |UC-<br>09|View reports|Manager|Choose a report and period; system<br>displays results.|
-
-
-
-## 9. Acceptance criteria
-
-- Completing a sale of 3 units of a product with 10 on hand leaves 7 on hand; attempting to sell 11 is rejected. 
-
-- Marking a purchase of 100 units Received increases stock by 100 and updates the product's cost price. 
-
-- For the milk example in section 4.3, the engine produces a recommendation for 310 units and an explanation containing the demand, lead time, stock and reorder point figures. 
-
-- Running the engine twice in a day produces one pending recommendation per product, not two. 
-
-- After a recommendation is accepted, the same product is not recommended again while the resulting order is still open and covers the need. 
-
-- A Cashier cannot open the purchase, user or recommendation screens. 
-
-- A deactivated user cannot log in, but their past sales remain visible. 
-
-
-## 10. Out of scope (future)
-
-- Customer returns, voids and refunds. 
-
-- Customer entity, loyalty and discounts. 
-
-- Multiple stores or warehouses. 
-
-- Multiple suppliers per product and supplier price comparison. 
-
-- Computed safety stock from demand variability and a target service level. 
-
-- Seasonality, promotions and trend-aware demand forecasting. 
-
-- Batch and expiry tracking for perishable goods. 
-
-- Barcode scanner or point-of-sale hardware integration. 
-
-- Automatic emailing of orders to suppliers. 
-
-- Payment processing and accounting integration. 
-
-- A settings screen for restocking parameters. 
 
